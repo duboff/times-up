@@ -3,15 +3,19 @@
 /*global React */
 
 var React = require('react');
-var Reverter = require('./reverter');
+
+var Input = require('./input');
+
+
+React.initializeTouchEvents(true);
+
+var React = require('react');
+
+// var Reverter = require('./reverter');
 var Nav = require('./nav');
 
 React.renderComponent(
-  <Reverter />,
-  document.getElementById('reverter')
+  <Input />,
+  document.getElementById('name-input')
 );
 
-React.renderComponent(
-  <Nav links={links} />,
-  document.getElementById('navigation')
-)

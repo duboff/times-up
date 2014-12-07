@@ -1,11 +1,11 @@
 {
   "name": "times-up",
   "version": "0.0.1",
-  "dependencies": {},
   "dependencies": {
     "es6-promise": "^2.0.0",
     "lodash": "^2.4.1",
-    "react": "^0.11.2"
+    "react": "^0.11.2",
+    "react-swiper": "^0.1.4"
   },
   "devDependencies": {
     "browser-sync": "~1.5.8",
