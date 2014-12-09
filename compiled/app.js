@@ -6,11 +6,6 @@ var React = require('react');
 
 var Input = require('./input');
 
-
-React.initializeTouchEvents(true);
-
-var React = require('react');
-
 // var Reverter = require('./reverter');
 var Nav = require('./nav');
 

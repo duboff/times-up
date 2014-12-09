@@ -12098,5 +12098,8 @@ main {
   text-align: left;
   font-size: 48px;
 }
+.hidden {
+  display: none;
+}
 
 /*# sourceMappingURL=maps/main.css.map */
