@@ -25,8 +25,12 @@ gulp.task('browserify', function () {
       vendor: true
     },
     {
-      src: ['./compiled/reverter/index.js'],
-      dest: 'reverter.js'
+      src: ['./compiled/name-list/index.js'],
+      dest: 'name-list.js'
+    },
+    {
+      src: ['./compiled/swipe-component/index.js'],
+      dest: 'swipe-component.js'
     },
     {
       src: ['./compiled/app.js'],

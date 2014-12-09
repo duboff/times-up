@@ -107,7 +107,7 @@ process.chdir = function (dir) {
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/jakearchibald/es6-promise/master/LICENSE
- * @version   2.0.0
+ * @version   2.0.1
  */
 
 (function() {
@@ -738,13 +738,11 @@ process.chdir = function (dir) {
 
       @class Promise
       @param {function} resolver
-      @param {String} label optional string for labeling the promise.
       Useful for tooling.
       @constructor
     */
-    function $$es6$promise$promise$$Promise(resolver, label) {
+    function $$es6$promise$promise$$Promise(resolver) {
       this._id = $$es6$promise$promise$$counter++;
-      this._label = label;
       this._state = undefined;
       this._result = undefined;
       this._subscribers = [];
@@ -960,11 +958,10 @@ process.chdir = function (dir) {
       @method then
       @param {Function} onFulfilled
       @param {Function} onRejected
-      @param {String} label optional string for labeling the promise.
       Useful for tooling.
       @return {Promise}
     */
-      then: function(onFulfillment, onRejection, label) {
+      then: function(onFulfillment, onRejection) {
         var parent = this;
         var state = parent._state;
 
@@ -972,9 +969,7 @@ process.chdir = function (dir) {
           return this;
         }
 
-        parent._onerror = null;
-
-        var child = new this.constructor($$$internal$$noop, label);
+        var child = new this.constructor($$$internal$$noop);
         var result = parent._result;
 
         if (state) {
@@ -1013,12 +1008,11 @@ process.chdir = function (dir) {
 
       @method catch
       @param {Function} onRejection
-      @param {String} label optional string for labeling the promise.
       Useful for tooling.
       @return {Promise}
     */
-      'catch': function(onRejection, label) {
-        return this.then(null, onRejection, label);
+      'catch': function(onRejection) {
+        return this.then(null, onRejection);
       }
     };
 
@@ -1055,8 +1049,8 @@ process.chdir = function (dir) {
     };
 
     var es6$promise$umd$$ES6Promise = {
-      Promise: $$es6$promise$promise$$default,
-      polyfill: $$es6$promise$polyfill$$default
+      'Promise': $$es6$promise$promise$$default,
+      'polyfill': $$es6$promise$polyfill$$default
     };
 
     /* global define:true module:true window: true */

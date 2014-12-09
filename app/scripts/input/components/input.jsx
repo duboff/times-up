@@ -28,19 +28,19 @@ module.exports = React.createClass({
     this.setState({cardClass: ''})
   },
   render: function() {
-    return (    
+    return (
       <div>
         <div className={this.state.cardClass ? '' : 'hidden'}>
           <NameList items={this.state.items} />
           <form onSubmit={this.handleSubmit}>
             <input type="text" className="form-control empty input-lg name-entry" placeholder="Enter a name" onChange={this.onChange} value={this.state.text} />
-            <button className="btn btn-primary btn-block btn-raised btn-sm">{'Submit name #' + (this.state.items.length + 1)}</button>       
+            <button className="btn btn-primary btn-block btn-raised btn-sm">{'Submit name #' + (this.state.items.length + 1)}</button>
           </form>
-    
+
           <button className="btn btn-success btn-block" onClick={this.handlePassButton}>Next player</button>
           <button className="btn btn-warning btn-block" onClick={this.handleGameButton}>Start Game</button>
         </div>
-        <SwipeCard show={this.state.cardClass} names={this.state.items} />
+        <SwipeCard show={this.state.cardClass} names={this.state.globalList} />
       </div>
     );
   }

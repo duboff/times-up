@@ -4,10 +4,11 @@
 
 var React = require('react');
 
-var Input = require('./input');
+React.initializeTouchEvents(true);
 
-// var Reverter = require('./reverter');
-var Nav = require('./nav');
+var React = require('react');
+
+var Input = require('./input');
 
 React.renderComponent(
   <Input />,

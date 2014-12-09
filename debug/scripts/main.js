@@ -7,16 +7,13 @@ var React = require('react');
 
 var Input = require('./input');
 
-// var Reverter = require('./reverter');
-var Nav = require('./nav');
-
 React.renderComponent(
   Input(null),
   document.getElementById('name-input')
 );
 
 
-},{"./input":4,"./nav":5,"react":"react"}],2:[function(require,module,exports){
+},{"./input":4,"react":"react"}],2:[function(require,module,exports){
 /** @jsx React.DOM */
 /*jshint indent: 2, node: true, nomen: true, browser: true*/
 /*global React */
@@ -47,7 +44,7 @@ module.exports = React.createClass({displayName: 'exports',
     this.setState({cardClass: ''})
   },
   render: function() {
-    return (    
+    return (
       React.DOM.div(null, 
         React.DOM.div({className: this.state.cardClass ? '' : 'hidden'}, 
           NameList({items: this.state.items}), 
@@ -55,16 +52,16 @@ module.exports = React.createClass({displayName: 'exports',
             React.DOM.input({type: "text", className: "form-control empty input-lg name-entry", placeholder: "Enter a name", onChange: this.onChange, value: this.state.text}), 
             React.DOM.button({className: "btn btn-primary btn-block btn-raised btn-sm"}, 'Submit name #' + (this.state.items.length + 1))
           ), 
-    
+
           React.DOM.button({className: "btn btn-success btn-block", onClick: this.handlePassButton}, "Next player"), 
           React.DOM.button({className: "btn btn-warning btn-block", onClick: this.handleGameButton}, "Start Game")
         ), 
-        SwipeCard({show: this.state.cardClass, names: this.state.items})
+        SwipeCard({show: this.state.cardClass, names: this.state.globalList})
       )
     );
   }
 });
-},{"../../swipe-component":7,"./name-list":3}],3:[function(require,module,exports){
+},{"../../swipe-component":6,"./name-list":3}],3:[function(require,module,exports){
 /** @jsx React.DOM */
 /*jshint indent: 2, node: true, nomen: true, browser: true*/
 /*global React */
@@ -82,69 +79,6 @@ module.exports = require('./components/input');
 
 
 },{"./components/input":2}],5:[function(require,module,exports){
-/** @jsx React.DOM */
-/*jshint indent: 2, node: true, nomen: true, browser: true*/
-/*global React */
-
-var HighlightedLink = React.createClass({displayName: 'HighlightedLink',
-  getDefaultProps: function (){
-    return {
-      activeClassName : 'active'
-    }
-  },
-  render: function() {
-    var className = this.isActive() ? className = this.props.activeClassName : "";
-    return (
-      React.DOM.li({className: className, onClick: this._changeLocation}, 
-        React.DOM.a(null, this.props.children)
-      )
-      );
-  },
-  _changeLocation: function (event) {
-    event.stopPropagation();
-    if (!this.isActive()) {
-      window.history.pushState({}, '', this.props.href);
-      this._owner._update();
-    }
-  },
-  isActive: function() {
-    return window.location.pathname === this.props.href
-  },
-})
-
-var NavButton = React.createClass({displayName: 'NavButton',
-  getInitialState: function () {
-    return {
-    };
-  },
-  componentDidMount: function () {
-    window.addEventListener('popstate', this._update);
-  },
-  componentWillUnmount: function () {
-    window.removeEventListener('popstate', this._update);
-  },
-  render: function () {
-    var links = this.props.links.map(function (element, index) {
-      return (
-        HighlightedLink({key: "links" + index, href: element.href}, 
-          element.title
-        )
-      );
-      })
-    return (
-    React.DOM.ul({className: "nav nav-pills pull-right"}, 
-      links
-    )
-    );
-  },
-  _update: function (route) {
-    this.props.action && this.props.action(route)
-    this.forceUpdate()
-  }
-});
-
-module.exports = NavButton;
-},{}],6:[function(require,module,exports){
 /** @jsx React.DOM */
 /*jshint indent: 2, node: true, nomen: true, browser: true*/
 /*global React */
@@ -185,7 +119,7 @@ module.exports = React.createClass({displayName: 'exports',
     );
   }
 });
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = require('./components/swipe-component');
 
-},{"./components/swipe-component":6}]},{},[1]);
+},{"./components/swipe-component":5}]},{},[1]);

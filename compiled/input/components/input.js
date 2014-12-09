@@ -28,7 +28,7 @@ module.exports = React.createClass({displayName: 'exports',
     this.setState({cardClass: ''})
   },
   render: function() {
-    return (    
+    return (
       React.DOM.div(null, 
         React.DOM.div({className: this.state.cardClass ? '' : 'hidden'}, 
           NameList({items: this.state.items}), 
@@ -36,11 +36,11 @@ module.exports = React.createClass({displayName: 'exports',
             React.DOM.input({type: "text", className: "form-control empty input-lg name-entry", placeholder: "Enter a name", onChange: this.onChange, value: this.state.text}), 
             React.DOM.button({className: "btn btn-primary btn-block btn-raised btn-sm"}, 'Submit name #' + (this.state.items.length + 1))
           ), 
-    
+
           React.DOM.button({className: "btn btn-success btn-block", onClick: this.handlePassButton}, "Next player"), 
           React.DOM.button({className: "btn btn-warning btn-block", onClick: this.handleGameButton}, "Start Game")
         ), 
-        SwipeCard({show: this.state.cardClass, names: this.state.items})
+        SwipeCard({show: this.state.cardClass, names: this.state.globalList})
       )
     );
   }
